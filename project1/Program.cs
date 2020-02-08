@@ -11,57 +11,102 @@ namespace project1
         {
 			//declarations
 			List<string> AvailablePlayerList = new List<string>();
+			List<string> SelectedPlayerList = new List<string>();
+			int num = 0;
+			int playerChoiceNumber = 0;
+					
+			Console.WriteLine(" ");
 
+			Console.Write("Available Players: \n");
 
-	
-			Console.WriteLine("Available Players:\n");
-			
-			// Displaying the elements of List 
-			foreach (string k in AvailablePlayerList)
+			// instantiating available players
+			Player playerAvailable = new Player();
+
+			AvailablePlayerList = playerAvailable.GetAvailablePlayer();
+
+			// Displaying available players
+			foreach (string k in AvailablePlayerList) 
 			{
-				Console.WriteLine(k);
+				num++;
+				playerChoiceNumber = num;
+				Console.WriteLine(num + ". " + k);
+				//need to add multi-dimensional array like survey
 			}
 
-			Console.WriteLine(" ");
+			Console.WriteLine();
 
 			Console.Write("Chosen Players: \n");
 
-			Player player1 = new Player();
+			// instantiating chosen players
+			Player playerSelected = new Player();
 
-			AvailablePlayerList = player1.SelectAvailablePlayer();
-			AvailablePlayerList.ForEach(Console.WriteLine);
+			SelectedPlayerList = playerSelected.ChooseAvailablePlayer("Choice");
+			
+			// Displaying chosen players
+			foreach (string m in SelectedPlayerList)
+			{
+				Console.WriteLine(m);
+			}
+
+			Console.WriteLine("Who do you wish to draft from the Available Players? Enter the number of the player.");
+
+			int PlayerChoice = Convert.ToInt16(Console.ReadLine());
+
+			Console.WriteLine(PlayerChoice + num);
 
 			Console.ReadLine();
-
-
+		}
 		}
 	}
-}
+
 
 
 public class Player
 {
 
-
 	public Player()
 	{
 	}
 
-	public List<string> SelectAvailablePlayer()
+	public Player(string ChosenPlayer)
 	{
-		// Adding elements to List, maybe pull from JSON file later, and remove any that have been selected already.
+	}
 
-		List<string> AvailablePlayerList = new List<string>();
+	public List<string> GetAvailablePlayer()
+	{
+		// Adding player to List, maybe pull from JSON file later, and exclude any that have been selected already.
 
-		AvailablePlayerList.Add("Billy");
-		AvailablePlayerList.Add("Bobby");
-		AvailablePlayerList.Add("Johnny");
-		AvailablePlayerList.Add("Dougy");
-		AvailablePlayerList.Add("Mikey");
+		List<string> AvailablePlayerList = new List<string>
+		{
+			"Billy",
+			"Bobby",
+			"Johnny",
+			"Dougy",
+			"Mikey"
+		};
 
 		return AvailablePlayerList;
 	}
+
+
+	// chosen player list...maybe store those selected
+
+	public List<string> ChooseAvailablePlayer(string chosenPlayer)
+	{
+		List<string> ChosenPlayerList = new List<string>
+		{
+			"Julie",
+			"Amy",
+			"Sally",
+			"Ally",
+			"Kally"
+		};
+
+		return ChosenPlayerList;
+	}
+
 }
+
 
 
 
