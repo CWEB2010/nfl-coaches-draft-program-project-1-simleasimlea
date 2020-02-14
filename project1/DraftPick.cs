@@ -4,15 +4,15 @@ using System.Text;
 
 namespace project1
 {
-	public class Player : IEquatable<Player>
+	public class DraftPick : IEquatable<Player>
 	{
-		public string PlayerName { get; set; }
+		//public string PlayerName { get; set; }
 
 		public int PlayerId { get; set; }
 
 		public override string ToString()
 		{
-			return "ID: " + PlayerId ;
+			return "ID: " + PlayerId;
 		}
 		public override bool Equals(object obj)
 		{
